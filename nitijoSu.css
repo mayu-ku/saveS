@@ -1,0 +1,77 @@
+@charset "UTF-8";
+
+body {
+	
+	background-image: url(nitijoSu_back.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	text-align: center;
+}
+
+.messageback {
+	margin: 60px 20px 0px 20px;
+	display: inline-block;
+	position: relative;
+	
+}
+
+.messagebox {
+	position: absolute;
+	top: 8%;
+	left: 20%;
+}
+
+#s1,#s2, #s3 {
+	display: block;
+	width:0;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+#s1 {
+	animation:s1 3s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes s1 {
+	from{width: 0em;}
+	33% {width: 12em;}
+	to{width:12em;}
+}
+
+#s2 {
+	animation:s2 3.5s;
+	animation-fill-mode: forwards;
+}
+@keyframes s2 {
+	0% {width:0em}
+	33% {width:0em}
+	66% {width:11em}
+	to {width:11em}
+}
+
+#s3 {
+	animation:s3 2.5s;
+	animation-fill-mode: forwards;
+	animation-delay: 1s;
+}
+@keyframes s3 {
+	0% {width:0em}
+	33% {width:0em}
+	66% {width:0em}
+	100%{width:11em}
+	to {width:11em}
+}
+
+@media only screen and (min-width:667px) {
+	body {
+		background-size: 350px 750px;
+		background-position: 50% 50%;
+		object-fit: cover;
+	}
+	.messageback {
+		margin-bottom: 460px;
+		margin-top: 30px;
+	}
+}
