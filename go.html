@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
+	<audio id="music">
+				<source src="go.mp3" type="audio/mp3">
+			</audio>	
+	
+	
 		<figure class="messageback">
 			<figcaption class="messagebox">
 				<span id="s1">よし！！絶対に助けるぞ！！</span><br>
@@ -22,6 +27,17 @@
 	
 		<div class="buttom_box">
 			<a href="stage1.html">➢対戦に進む</a>
-		</div>	
+		</div>
+		
+	
+	
+	
 </body>
+<script>
+//BGM
+		const music = new Audio('go.mp3');
+		music.currentTime = 0;
+		music.play();
+		
+</script>
 </html>
