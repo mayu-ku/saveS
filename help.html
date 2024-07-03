@@ -8,6 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
+	<audio id="music">
+				<source src="omg.mp3" type="audio/mp3">
+			</audio>
+	
+	
 		<figure class="messageback">
 			<figcaption class="messagebox">
 				<span id="s1">仙石さんがUFOにさらわれた！</span><br>
@@ -23,5 +28,16 @@
 		<div class="buttom_box">
 			<a href="go.html">➢助けに行く</a>
 		</div>
+		
+	
+	
+	
 </body>
+<script>
+//BGM
+		const music = new Audio('omg.mp3');
+		music.currentTime = 0;
+		music.play();
+		
+</script>
 </html>
