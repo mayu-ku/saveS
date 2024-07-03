@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>結果</title>
+<link rel="stylesheet" href="time.css">
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet"> 
+</head>
+<body>
+	<audio id="music">
+				<source src="weback.mp3" type="audio/mp3">
+			</audio>
+	<div class="message">
+	<h1>あなたのタイムは</h1>
+	
+		<div id = "time"><span id="score">a</span>秒</div>
+		
+	<h1>です</h1>
+	</div>
+	
+	<div class="again"><a href="mugen.html">もう一度プレイ</a></div>
+	<div class="menu"><a href="index.html">➢最初の画面に戻る</a></div>
+
+</body>
+
+<script>
+	const urlParams = new URLSearchParams(window.location.search);
+	const value = urlParams.get('value');
+	console.log('受け取った値:', value);
+	const sss = document.getElementById("score");
+	sss.innerHTML = value;
+	
+	//BGM
+			const music = new Audio('weback.mp3');
+			music.currentTime = 0;
+			music.play();
+</script>
+
+</html>
