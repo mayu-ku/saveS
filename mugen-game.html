@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>score challenge</title>
+<link rel="stylesheet" href="mugen-game.css">
+</head>
+<body>
+	
+	<!--説明文-->
+		 <div id = "explanation"></div>
+	
+	<div id = "game">
+		<div><button type ="button" id = "btn" onclick="audio()"></button></div>
+		<audio id="btn_audio">
+			<source src="jump1.mp3" type="audio/mp3"></source>
+		</audio>
+		<audio id="music">
+			<source src="bgm4.mp3" type="audio/mp3">
+		</audio>
+		<div id = "character"></div>
+		<div id = "obstacle"></div>
+		<div id = "obstacle2"></div>
+		<div id = "obstacle3"></div>
+		<div id = "life1"></div>
+		<div><input type ="hidden" id = "sTime" value=""></div>
+		<div><input type ="hidden" id = "score" value=""></div>
+	</div>
+
+</body>
+
+
+<script>
+	
+	var exp = document.getElementById("explanation");
+	
+	var character =
+		document.getElementById("character");
+	var obstacle =
+		document.getElementById("obstacle"); 
+		obstacle.style.display="none";
+	var obstacle2 =
+		document.getElementById("obstacle2");
+		obstacle2.style.display="none";
+	var obstacle3 =
+		document.getElementById("obstacle3");
+		obstacle3.style.display="none";
+	var stime = 
+		document.getElementById("sTime");
+	
+	//ランダム背景変更のための画像配列	
+	var images = [
+		'url(bg_uchu_space.jpg)',
+		'url(bg_dote.jpg)',
+		'url(bg_rain_natural_sky.jpg)',
+		'url(bg_natural_ocean.jpg)',
+		'url(bg_network_dennou_sekai.jpg)',
+		'url(bg_unkai_yama.jpg)',
+		'url(bg_nangoku.jpg)'
+		];
+	
+	//ランダムに背景変更	
+	function backgroundRandom(){
+		var number = Math.floor(Math.random()*images.length);
+		var selectedImg = images[number];
+		
+		document.getElementById("game").style.backgroundImage = selectedImg;
+	}	
+	
+	//10秒ごとにランダム背景変更を行う
+	setInterval(backgroundRandom,10000);
+	
+	//ロードしたらロード時の時刻を取得
+	window.addEventListener('load',function(){
+		var startTime = Date.now();
+		console.log(startTime);
+		document.getElementById("sTime").value = startTime;	
+	})
+	
+	
+	var seconds = 0;
+	setInterval(function(){
+		seconds++;
+		console.log(seconds);
+		
+		//4秒後に説明を非表示
+		if(seconds==4){
+			exp.style.display = "none";
+		}
+		
+		//5秒後に障害物を表示
+		if(seconds==5){
+			obstacle.style.display="block";
+			obstacle2.style.display="block";
+		}
+		if(seconds==6){
+			obstacle3.style.display="block";
+				}
+		if(seconds==10){
+			obstacle2.style.display="none";
+		}
+		if(seconds==12){
+			obstacle2.style.display="block";
+		}
+		
+	},1000);
+	
+	
+	//300ミリ秒ごとにジャンプ可能にする
+	function jump(){
+		if(character.classList != "animate"){
+				character.classList.add("animate");
+			}
+		setTimeout(function(){
+			character.classList.remove("animate");
+		},300);
+	}
+	
+	
+	//ボタンが押されたらジャンプさせる
+	var buttonElm = document.getElementById('btn');
+	
+	if (document.addEventListener){
+		    var _click = (window.ontouchstart === undefined)? 'click' : 'touchstart';
+			
+			buttonElm.addEventListener(_click, function(){
+				jump();
+			}, false);
+			
+		}else if(document.attachEvent){
+			    clickTap.attachEvent('onclick', function(){
+					jump();
+				});
+			}
+	
+	
+	//スコアの計算
+	 function showTime(){
+		const endTime = Date.now();
+		const sst = document.getElementById("sTime").value;
+		console.log(sst);
+		const score = ((endTime - sst - 4000)/1000);
+		console.log("スコア（秒）:",score);
+		document.getElementById("score").value = score;
+		window.location.href = `result.html?value=${score}`;
+	}
+	
+	
+	//ライフ
+	var lifeOne = document.getElementById("life1");
+	
+	
+	//ダメージを受けたら画像を変える
+		function damageChange(){
+				character.style.backgroundImage='url(run_businesswoman_aseru.png)';
+				character.style.width="90px";
+				character.style.height="90px";
+				character.style.backgroundSize="cover";
+				setTimeout(function(){
+					character.style.backgroundImage='url(shinsyakaijin_run_woman2.png)';
+					character.style.width="90px";
+					character.style.height="90px";
+					character.style.backgroundSize="cover";		
+						},300);
+			}
+			
+	//ジャンプしたら音が出る
+		const enterKeyButton = document.getElementById('btn');
+				
+		const clickSound = document.getElementById('btn_audio');
+				
+		      enterKeyButton.addEventListener('click', function() {
+					clickSound.currentTime = 0;
+					clickSound.play();
+				})
+				
+	//BGM
+	const music = new Audio('bgm4.mp3');
+	      music.currentTime = 0;
+		  music.play();
+		  music.loop = true;
+			
+	//当たり判定
+		var check = setInterval (function(){
+		var characterTop = 
+			parseInt(window.getComputedStyle(character).
+			getPropertyValue("top"));
+		var obstacleLeft = 
+			parseInt(window.getComputedStyle(obstacle).
+				getPropertyValue("left"));
+		var obstacle2Left = 
+			parseInt(window.getComputedStyle(obstacle2).
+				getPropertyValue("left"));
+			
+							
+			if(obstacleLeft<40 && obstacleLeft>10 &&
+				characterTop>=190 || obstacle2Left<40&&obstacle2Left>10 && characterTop>=190
+					){
+					damageChange()
+					lifeOne.style.display="none";
+					obstacle.style.display="none";
+					obstacle2.style.display="none";;
+					showTime();
+				}
+				
+				},40);
+				
+	
+</script>
+</html>
