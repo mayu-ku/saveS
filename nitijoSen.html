@@ -9,7 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@800&display=swap" rel="stylesheet">
 </head>
 <body>
-
+	<audio id="music">
+		<source src="nitijo.mp3" type="audio/mp3">
+	</audio>
 	<figure class="messageback">
 		<figcaption class="messagebox">
 			<span id="s1">鈴木、今日の昼めしどうする？</span><br>
@@ -22,4 +24,10 @@
 	</figure>
 		
 </body>
+<script>
+	//BGM
+	const music = new Audio('nitijo.mp3');
+		music.currentTime = 0;
+		music.play();	
+</script>
 </html>
