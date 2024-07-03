@@ -1,0 +1,121 @@
+@charset "UTF-8";
+body {
+	background-image: url(stage2back.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+	font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+.setumei_box {
+	text-align: center;
+}
+
+
+.setumei {
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	border: 4px solid rgb(176, 176, 176);
+	padding: 10px 10px;
+	font-weight: bold;
+	font-size: 17px;
+	background: white ;
+	-webkit-border-radius: 10px;
+	-moz-boder-radius: 10px;
+	border-radius: 10px;
+	
+	text-align: center;
+	
+	width: 250px;
+	height: auto;
+	
+	margin:0 auto;
+	
+}
+
+.yoko {
+	text-align: center;
+	color: yellow;
+	margin-top: 140px;
+	margin-bottom: 15px;
+	font-size: 13px;
+	font-weight: bolder;
+}
+
+.buttom_box {
+	text-align: center;
+	
+}
+
+div.buttom_box:hover {
+	transition: 0.1s;
+	transform: translateY(4px);
+    }
+
+div.buttom_box a:hover {
+	color: rgb(255. 105,15);
+	background: #fff;
+    box-shadow: none;
+	border-color: #D6B656;
+}
+
+.button {
+	text-decoration: none;
+	
+	-webkit-border-radius: 10px;
+	-moz-boder-radius: 10px;
+	border-radius: 10px;
+	border:4px solid #D6B656;
+	
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	text-align: center;
+	padding: 10px 55px;
+	background: #FFF2CC ;
+	color: black;	
+}
+
+.menu {
+     text-align: center;
+     margin-top: 35px;
+}
+
+.menu:hover {
+	 transition: 0.1s;
+	 transform: translateY(4px);
+}
+
+.menu a {
+       text-decoration: none;
+       color: white;
+       font-family: "M PLUS Rounded 1c", sans-serif;
+       font-size: larger;
+}
+
+@media screen and (max-width:390px) {
+	.setumei {
+		margin-top:180px;
+	}
+}
+
+@media screen and (min-width:390px) and (max-width:440px) {
+	.setumei {
+		margin-top:300px;
+	}
+}
+
+@media only screen and (min-width:667px) {
+	body {
+		background-size: 355px 735px;
+		background-position: 50% 50%;
+		object-fit: cover;
+	}
+	.menu {
+		margin-bottom: 70px;
+	}
+	
+	.setumei {
+		margin-top: 250px;
+	}
+	
+}
