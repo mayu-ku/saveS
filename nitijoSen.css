@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+body {
+	
+	background-image: url(nitijoSen_back.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: "M PLUS Rounded 1c", sans-serif;
+	text-align: center;
+}
+
+.messageback {
+	margin-top: 60px;
+	display: inline-block;
+	position: relative;
+	margin-bottom: 0px;
+}
+
+.messagebox {
+	
+	position: absolute;
+	top: 15%;
+	left: 10%;
+}
+
+#s1,#s2 {
+	display: block;
+	width:0;
+	overflow:hidden;
+	white-space:nowrap;
+}
+
+#s1 {
+	animation:s1 1.8s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes s1 {
+	from{width: 0em;}
+	50% {width: 14em;}
+	to{width:14em;}
+}
+
+#s2 {
+	animation:s2 2s;
+	animation-fill-mode: forwards;
+}
+@keyframes s2 {
+	0% {width:0em}
+	50% {width:0em}
+	to {width:5em}
+}
+
+
+@media only screen and (min-width:667px) {
+	body {
+		background-size: 350px 750px;
+		background-position: 50% 50%;
+		object-fit: cover;
+	}
+	.messageback {
+		margin-bottom: 460px;
+		margin-top: 50px;
+	}
+ 
+	
+}
